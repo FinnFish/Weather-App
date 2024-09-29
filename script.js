@@ -1,11 +1,8 @@
-// WeatherAPI API Key
-const apiKey = process.env.REACT_APP_WEATHER_API_KEY
-const apiBaseUrl = 'https://api.weatherapi.com/v1/current.json?';
-
 // Function to fetch weather data
 async function fetchWeather(city) {
     try {
-        const response = await fetch(`${apiBaseUrl}key=${apiKey}&q=${city}&lang=en`);
+        // Aufruf der Netlify Function mit der Stadt als Parameter
+        const response = await fetch(`/.netlify/functions/weather?city=${city}`);
         console.log(`API URL: ${response.url}`); // Debugging: Log API URL
         if (!response.ok) {
             throw new Error('City not found');
@@ -79,4 +76,3 @@ document.getElementById('search-btn').addEventListener('click', () => {
 window.onload = () => {
     fetchWeather('Frankfurt');
 };
-
