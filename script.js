@@ -1,5 +1,5 @@
 // WeatherAPI API Key
-const apiKey = 'API_KEY';
+const apiKey = process.env.REACT_APP_WEATHER_API_KEY
 const apiBaseUrl = 'https://api.weatherapi.com/v1/current.json?';
 
 // Function to fetch weather data
