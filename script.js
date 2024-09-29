@@ -1,5 +1,5 @@
 // WeatherAPI API Key
-const apiKey = 'c7f49a260a934b049b3161151242909';
+const apiKey = 'API_KEY';
 const apiBaseUrl = 'https://api.weatherapi.com/v1/current.json?';
 
 // Function to fetch weather data
