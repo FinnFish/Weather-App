@@ -42,16 +42,24 @@ function updateWeatherUI(data) {
     windElement.textContent = `${data.current.wind_kph} km/h`;
 
     // Update weather icon based on the weather condition
-    const weatherIcons = {
-        sunny: "assets/clear.svg",
-        rain: "assets/rain.svg",
-        cloudy: "assets/clouds.svg",
-        fog: "assets/atmosphere.svg",
-        haze: "assets/atmosphere.svg",
-        drizzle: "assets/drizzle.svg",
-        snow: "assets/snow.svg",
-        thunderstorm: "assets/thunderstorm.svg",
-    };
+    if (weatherCondition.includes("sunny")) {
+        weatherIcon.src = "assets/clear.svg"; // Sunny icon
+    } else if (weatherCondition.includes("rain")) {
+        weatherIcon.src = "assets/rain.svg"; // Rainy icon
+    } else if (weatherCondition.includes("cloudy")) {
+        weatherIcon.src = "assets/clouds.svg"; // Cloudy icon
+    } else if (weatherCondition.includes("fog") || weatherCondition.includes("haze")) {
+        weatherIcon.src = "assets/atmosphere.svg"; // Fog icon
+    } else if (weatherCondition.includes("drizzle")) {
+        weatherIcon.src = "assets/drizzle.svg"; // Drizzle icon
+    } else if (weatherCondition.includes("snow")) {
+        weatherIcon.src = "assets/snow.svg"; // Snow icon
+    } else if (weatherCondition.includes("thunderstorm")) {
+        weatherIcon.src = "assets/thunderstorm.svg"; // Thunderstorm icon
+    } else {
+        weatherIcon.src = "assets/clear.svg"; // Fallback icon
+    }
+    
 
     const weatherCondition = data.current.condition.text.toLowerCase();
     const iconPath = Object.keys(weatherIcons).find(condition => weatherCondition.includes(condition)) 
