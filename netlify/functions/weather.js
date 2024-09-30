@@ -1,46 +1,27 @@
-import fetch from 'node-fetch'; // Import node-fetch with ESM syntax
-
 export async function handler(event, context) {
-    const apiKey = process.env.WEATHER_API_KEY; // API key from environment variables
+    const apiKey = process.env.WEATHER_API_KEY; // Stellen Sie sicher, dass dieser korrekt gesetzt ist
+    const city = event.queryStringParameters.city || 'Berlin'; // Standardwert
 
-    const city = event.queryStringParameters.city ? event.queryStringParameters.city.trim() : 'Frankfurt am Main';
-
-    // Validate city input
-    if (!city) {
-        return {
-            statusCode: 400,
-            body: JSON.stringify({ error: 'Please provide a valid city name.' }),
-        };
-    }
-
-    const apiBaseUrl = 'https://api.weatherapi.com/v1/current.json?';
-    const url = `${apiBaseUrl}key=${apiKey}&q=${city}&lang=en`;
+    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&lang=en`;
 
     try {
-        const response = await fetch(url);
-
-        // Check for response errors
+        const response = await fetch(url); // Verwenden Sie die eingebaute fetch-Funktion
         if (!response.ok) {
-            if (response.status === 404) {
-                return {
-                    statusCode: 404,
-                    body: JSON.stringify({ error: 'City not found. Please check the name.' }),
-                };
-            }
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            return {
+                statusCode: response.status,
+                body: JSON.stringify({ error: 'Stadt nicht gefunden oder ein Fehler ist aufgetreten.' }),
+            };
         }
-
-        const data = await response.json();
-
+        const data = await response.json(); // Holen Sie sich die JSON-Daten
         return {
             statusCode: 200,
             body: JSON.stringify(data),
         };
     } catch (error) {
-        console.error('Error fetching weather data:', error); // Log the error for debugging
+        console.error('Fehler beim Abrufen der Wetterdaten:', error); // Fehlerprotokollierung
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Error retrieving weather data.' }),
+            body: JSON.stringify({ error: 'Fehler beim Abrufen der Wetterdaten.' }),
         };
     }
 }

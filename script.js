@@ -74,5 +74,5 @@ document.getElementById('search-btn').addEventListener('click', () => {
 
 // Function to show default weather on page load
 window.onload = () => {
-    fetchWeather('Frankfurt am Main');
+    fetchWeather('Berlin');
 };
