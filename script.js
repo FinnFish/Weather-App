@@ -41,6 +41,9 @@ function updateWeatherUI(data) {
     humidityElement.textContent = `${data.current.humidity}%`;
     windElement.textContent = `${data.current.wind_kph} km/h`;
 
+    // Initialize weather condition variable
+    const weatherCondition = data.current.condition.text.toLowerCase(); // Declare before use
+
     // Update weather icon based on the weather condition
     if (weatherCondition.includes("sunny")) {
         weatherIcon.src = "assets/clear.svg"; // Sunny icon
@@ -59,14 +62,7 @@ function updateWeatherUI(data) {
     } else {
         weatherIcon.src = "assets/clear.svg"; // Fallback icon
     }
-    
 
-    const weatherCondition = data.current.condition.text.toLowerCase();
-    const iconPath = Object.keys(weatherIcons).find(condition => weatherCondition.includes(condition)) 
-                     ? weatherIcons[condition] 
-                     : weatherIcons.sunny; // Fallback icon
-
-    weatherIcon.src = iconPath;
     weatherIcon.alt = `Weather icon for ${data.current.condition.text}`; // Accessibility improvement
 }
 
