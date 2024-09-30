@@ -1,7 +1,7 @@
-const fetch = require('node-fetch'); // Netlify unterstützt Node.js
+import fetch from 'node-fetch'; // Importiert node-fetch mit der ESM-Syntax
 
-exports.handler = async function(event, context) {
-    const apiKey = process.env.WEATHER_API_KEY;  // Dein API-Key aus der Umgebungsvariable
+export async function handler(event, context) {
+    const apiKey = process.env.WEATHER_API_KEY;  // API-Key aus Umgebungsvariablen
     const city = event.queryStringParameters.city || 'Berlin'; // Standardwert 'Berlin'
 
     const apiBaseUrl = 'https://api.weatherapi.com/v1/current.json?';
@@ -22,4 +22,4 @@ exports.handler = async function(event, context) {
             body: JSON.stringify({ error: 'Fehler beim Abrufen der Wetterdaten' }),
         };
     }
-};
+}
