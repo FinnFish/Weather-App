@@ -1,32 +1,64 @@
-@media (max-width: 500px) {
+@media (max-width: 768px) {
     .app-main {
-        width: 90%; /* Adjusts the width to 90% of the screen */
+        width: 90%; /* Breite anpassen */
+        min-height: auto; /* Höhe automatisch anpassen */
     }
 
     .searchInputBox {
-        width: 100%; /* Full-width for search box */
+        width: 100%; /* Eingabefeld auf volle Breite */
     }
 
-    .searchInputBox input {
-        padding: 10px 30px 10px 15px;
+    .head-details {
+        font-size: 18px; /* Schriftgröße verringern */
     }
 
-    .weather-status img {
-        width: 150px;
-        height: 150px;
+    .weather-body {
+        height: auto; /* Höhe automatisch anpassen */
+    }
+
+    img {
+        width: 150px; /* Bildgröße anpassen */
+        height: 150px; 
     }
 
     .now {
-        font-size: 24px; /* Smaller font size for temperature */
-    }
-
-    .stats {
-        flex-direction: column;
-        align-items: center;
+        width: 150px; 
+        height: 150px;
+        font-size: 24px; /* Schriftgröße anpassen */
     }
 
     .humidity, .wind {
-        width: 100%;
-        justify-content: space-between;
+        font-size: 20px; /* Schriftgröße anpassen */
+    }
+}
+
+/* Mobile (480px und kleiner) */
+@media (max-width: 480px) {
+    .app-main {
+        width: 100%; /* Maximale Breite auf 100% */
+        min-height: auto; /* Höhe automatisch anpassen */
+    }
+
+    .searchInputBox {
+        width: 100%; /* Eingabefeld auf volle Breite */
+    }
+
+    .head-details {
+        font-size: 16px; /* Schriftgröße weiter verringern */
+    }
+
+    img {
+        width: 100px; /* Bildgröße anpassen */
+        height: 100px; 
+    }
+
+    .now {
+        width: 100px; 
+        height: 100px;
+        font-size: 20px; /* Schriftgröße anpassen */
+    }
+
+    .humidity, .wind {
+        font-size: 18px; /* Schriftgröße anpassen */
     }
 }
