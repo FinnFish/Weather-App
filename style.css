@@ -15,21 +15,27 @@
     font-family: 'Noto Sans', sans-serif;
 }
 
+:root {
+    --base-color: #0F4C75;
+    --base-variant: #1B262C;
+    --text-color: #fff;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #1c2541;
-    color: white;
+    background-color: var(--base-color);
+    color: var(--text-color);
 }
 
 .app-main {
-    background-color: #0b132b;
+    background-color: var(--base-variant);
     width: 450px;
     min-height: 600px;
     border-radius: 10px;
-    box-shadow: 0 0 50px #0b132b;
+    box-shadow: 0 0 50px var(--base-variant);
 }
 
 /* SEARCH */
