@@ -3,8 +3,7 @@ import fetch from 'node-fetch'; // Import node-fetch with ESM syntax
 export async function handler(event, context) {
     const apiKey = process.env.WEATHER_API_KEY; // API key from environment variables
 
-    // Default city is Berlin if not provided
-    const city = event.queryStringParameters.city ? event.queryStringParameters.city.trim() : 'Berlin';
+    const city = event.queryStringParameters.city ? event.queryStringParameters.city.trim() : 'Frankfurt am Main';
 
     // Validate city input
     if (!city) {
